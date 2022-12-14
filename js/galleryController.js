@@ -99,17 +99,57 @@ function renderMeme() {
   img.src = currImg
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
+  renderMemeTxt()
   // line of text on top
+  // const meme = getGMeme()
+  // const txt0 = meme.lines[0].txt
+  // const size0 = meme.lines[0].size
+  // const align0 = meme.lines[0].align
+  // const color0 = meme.lines[0].color
+  // gCtx.lineWidth = 2
+  // gCtx.strokeStyle = 'black'
+  // gCtx.fillStyle = color0
+  // gCtx.font = `${size0}px Impact`
+  // gCtx.textAlign = align0
+  // gCtx.textBaseline = 'middle'
+  // gCtx.fillText(txt0, 300, 40)
+  // gCtx.strokeText(txt0, 300, 40) // Draws (strokes) a given text at the given (x, y) position.
+
+  // // line of text on bottom
+  // const txt1 = meme.lines[1].txt
+  // const size1 = meme.lines[1].size
+  // const align1 = meme.lines[1].align
+  // const color1 = meme.lines[1].color
+  // gCtx.lineWidth = 2
+  // gCtx.strokeStyle = 'black'
+  // gCtx.fillStyle = color1
+  // gCtx.font = `${size1}px Impact`
+  // gCtx.textAlign = align1
+  // gCtx.textBaseline = 'middle'
+  // gCtx.fillText(txt1, 300, 300)
+  // gCtx.strokeText(txt1, 300, 300) // Draws (strokes) a given text at the given (x, y) position.
+}
+
+function renderMemeTxt() {
   const meme = getGMeme()
-  const { txt, size, align, color } = meme.lines[0]
-  gCtx.lineWidth = 2
-  gCtx.strokeStyle = 'black'
-  gCtx.fillStyle = color
-  gCtx.font = `${size}px Impact`
-  gCtx.textAlign = align
-  gCtx.textBaseline = 'middle'
-  gCtx.fillText(txt, 300, 40)
-  gCtx.strokeText(txt, 300, 40) // Draws (strokes) a given text at the given (x, y) position.
+  meme.lines.forEach((line, idx) => {
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'black'
+    gCtx.fillStyle = line.color
+    gCtx.font = `${line.size}px Impact`
+    gCtx.textAlign = line.align
+    gCtx.textBaseline = 'middle'
+    if (idx === 0) {
+      gCtx.fillText(line.txt, 300, 40)
+      gCtx.strokeText(line.txt, 300, 40)
+    } else if (idx === 1) {
+      gCtx.fillText(line.txt, 300, 300)
+      gCtx.strokeText(line.txt, 300, 300)
+    } else {
+      gCtx.fillText(line.txt, 300, 300)
+      gCtx.strokeText(line.txt, 150, 150)
+    }
+  })
 }
 
 // edit meme
@@ -129,4 +169,45 @@ function onChangeColor(clr) {
   console.log(clr)
   setTxtColor(clr)
   renderMeme()
+}
+
+// *switch
+function onSwitchLines() {
+  switchLines()
+  renderMeme()
+  // const currLine = getDragLine()
+  // renderRecOnText(currLine);
+}
+
+// * add line
+function onAddTextLine() {
+  addLine()
+  renderMeme()
+  // const currLine = getDragLine();
+  // renderRecOnText(currLine);
+}
+
+// * service
+function addLine(txt) {
+  const linesCount = gMeme.lines.length
+  console.log(linesCount)
+  const lineTxt = !txt ? 'New Text' : txt
+  if (linesCount === 1) {
+    var posY = gCanvas.height - 55
+  } else if (linesCount >= 2) {
+    var posY = 200
+  }
+
+  const line = {
+    txt: `${lineTxt}`,
+    fontSize: 40,
+    font: 'Impact',
+    align: 'left',
+    color: '#fff',
+    outline: '#000',
+    position: { x: 70, y: posY },
+    isDrag: false,
+  }
+  gMeme.lines.push(line)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
 }

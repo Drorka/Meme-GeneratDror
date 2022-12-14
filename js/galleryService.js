@@ -94,6 +94,12 @@ var gMeme = {
       align: 'center',
       color: 'white',
     },
+    {
+      txt: 'Enter text',
+      size: 40,
+      align: 'center',
+      color: 'white',
+    },
   ],
 }
 
@@ -112,6 +118,18 @@ function setTxtSize(diff) {
 
 function setTxtColor(clr) {
   gMeme.lines[gMeme.selectedLineIdx].color = clr
+}
+
+function switchLines() {
+  if (!gMeme.lines.length) return
+  // On last line go back to first line
+  if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+    gMeme.selectedLineIdx = 0
+  } else {
+    // Move to next line
+    gMeme.selectedLineIdx++
+  }
+  console.log(gMeme.selectedLineIdx)
 }
 
 // get stuff
