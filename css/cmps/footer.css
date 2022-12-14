@@ -1,0 +1,44 @@
+.main-content-footer {
+    border-top: var(--clr5) 1px solid;
+}
+
+.main-layout-footer {
+    background-color: var(--headerFooterBg);
+    text-align: center;
+}
+
+.main-layout-footer .logo {
+    color: var(--txt);
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+.main-layout-footer small {
+    font-size: 13px;
+    letter-spacing: 0.39px;
+    color: var(---txt);
+}
+
+@media (min-width:780px){
+    .main-content-footer a {
+        font-size: 1.125rem;
+        padding: 1.875rem 1.875rem;
+    }
+
+    .main-content-footer a img {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:1060px){
+    .main-layout-footer .logo {
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+    }
+
+    .main-layout-footer ul {
+        padding-top: 1.9rem;
+        padding-bottom: 5rem;
+    }
+}

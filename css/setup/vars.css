@@ -1,0 +1,18 @@
+:root {
+    /* pallete */
+
+	/* bg color */
+	--bgColor: rgb(24, 29, 49);
+	--headerFooterBg: rgb(103, 137, 131);
+	--txt: rgb(230, 221, 196);
+	--outlines: rgb(240, 233, 210);
+
+	--white: rgb(255, 255, 255);
+	--black: rgb(0, 0, 0);
+
+
+    /* bp */
+    --s: 600px;
+    --m: 740px;
+    --l: 980px;
+}

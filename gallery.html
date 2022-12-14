@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Meme GeneratDror</title>
+  </head>
+  <body onload="onInit()">
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+
+    <!-- header -->
+    <header class="main-header full main-layout">
+      <div class="header-container flex align-center space-between">
+        <div class="logo"><a href="#">MemeGeneratDror</a></div>
+        <nav class="main-nav">
+          <ul class="flex clean-list nav-list">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">My Memes</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
+      </div>
+    </header>
+
+    <main class="main-content main-layout">
+      <!-- editor -->
+      <section class="main-editor main-layout grid-editor">
+        <div class="canvas-container">
+          <canvas id="my-canvas" height="350" width="600"></canvas>
+        </div>
+        <div class="editor-panel grid-editor-panel">
+          <input
+            oninput="onInputText(event)"
+            class="input-txt"
+            type="text"
+            placeholder="Enter text..."
+          />
+          <button class="etidor-btn">text+</button>
+          <button class="etidor-btn">text-</button>
+          <button class="etidor-btn">L</button>
+          <button class="etidor-btn">C</button>
+          <button class="etidor-btn">R</button>
+          <button class="etidor-btn">up</button>
+          <button class="etidor-btn">down</button>
+          <button class="etidor-btn">switch</button>
+          <button class="etidor-btn">add</button>
+          <button class="etidor-btn">del</button>
+          <button class="etidor-btn">dnld</button>
+          <button class="etidor-btn">save</button>
+          <button class="etidor-btn">share</button>
+        </div>
+      </section>
+
+      <!-- gallery -->
+      <div class="filters flex space-around">
+        <div class="search flex">
+          <input
+            type="search"
+            class="search-input"
+            placeholder="Search meme"
+            oninput="onSetFilterByTxt(this.value)"
+          />
+        </div>
+        <div class="tags">
+          <ul class="clean-list flex tag-list">
+            <li>Tutit</li>
+            <li>Milel</li>
+            <li>Ronando</li>
+          </ul>
+        </div>
+      </div>
+      <div class="img-container grid">
+        <!-- imgs rendered here -->
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="main-layout-footer full">
+      <div class="logo">MemeGenerator</div>
+      <small>© Dror Karpfen 2022</small>
+    </footer>
+
+    <!-- scripts -->
+    <script src="js/storageService.js"></script>
+    <script src="js/galleryService.js"></script>
+    <script src="js/galleryController.js"></script>
+  </body>
+</html>
