@@ -90,13 +90,14 @@ var gMeme = {
   lines: [
     {
       txt: 'Enter text',
-      size: '40',
+      size: 40,
       align: 'center',
       color: 'white',
     },
   ],
 }
 
+// set and update gMeme
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
@@ -105,6 +106,15 @@ function setLineTxt(char) {
   gMeme.lines[gMeme.selectedLineIdx].txt = char
 }
 
+function setTxtSize(diff) {
+  gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
+
+function setTxtColor(clr) {
+  gMeme.lines[gMeme.selectedLineIdx].color = clr
+}
+
+// get stuff
 function getCurrImg() {
   let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
   return currImg.url

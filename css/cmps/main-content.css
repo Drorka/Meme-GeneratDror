@@ -23,6 +23,11 @@ canvas {
 	grid-column: 1 / 6;
 }
 
+.color-input {
+	opacity: 0;
+	cursor: pointer;
+}
+
 /* * filters and search */
 .filters {}
 

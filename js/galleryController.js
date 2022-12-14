@@ -110,12 +110,23 @@ function renderMeme() {
   gCtx.textBaseline = 'middle'
   gCtx.fillText(txt, 300, 40)
   gCtx.strokeText(txt, 300, 40) // Draws (strokes) a given text at the given (x, y) position.
-  // onDrawText()
 }
 
 // edit meme
 function onInputText(ev) {
   console.log(ev)
   setLineTxt(ev.target.value)
+  renderMeme()
+}
+
+function onChangeTxtSize(diff) {
+  console.log(diff)
+  setTxtSize(diff)
+  renderMeme()
+}
+
+function onChangeColor(clr) {
+  console.log(clr)
+  setTxtColor(clr)
   renderMeme()
 }

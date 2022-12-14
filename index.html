@@ -38,8 +38,12 @@
             type="text"
             placeholder="Enter text..."
           />
-          <button class="etidor-btn">text+</button>
-          <button class="etidor-btn">text-</button>
+          <button onclick="onChangeTxtSize(+1)" class="etidor-btn">
+            text+
+          </button>
+          <button onclick="onChangeTxtSize(-1)" class="etidor-btn">
+            text-
+          </button>
           <button class="etidor-btn">L</button>
           <button class="etidor-btn">C</button>
           <button class="etidor-btn">R</button>
@@ -48,6 +52,15 @@
           <button class="etidor-btn">switch</button>
           <button class="etidor-btn">add</button>
           <button class="etidor-btn">del</button>
+          <button class="etidor-btn">
+            <input
+              oninput="onChangeColor(this.value)"
+              type="color"
+              name="fillColor"
+              class="color-input"
+            />
+            clr
+          </button>
           <button class="etidor-btn">dnld</button>
           <button class="etidor-btn">save</button>
           <button class="etidor-btn">share</button>
