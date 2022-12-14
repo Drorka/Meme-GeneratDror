@@ -171,43 +171,38 @@ function onChangeColor(clr) {
   renderMeme()
 }
 
-// *switch
 function onSwitchLines() {
   switchLines()
   renderMeme()
-  // const currLine = getDragLine()
-  // renderRecOnText(currLine);
 }
 
-// * add line
-function onAddTextLine() {
-  addLine()
-  renderMeme()
-  // const currLine = getDragLine();
-  // renderRecOnText(currLine);
-}
+// // * add line
+// function onAddTextLine() {
+//   addLine()
+//   renderMeme()
+// }
 
-// * service
-function addLine(txt) {
-  const linesCount = gMeme.lines.length
-  console.log(linesCount)
-  const lineTxt = !txt ? 'New Text' : txt
-  if (linesCount === 1) {
-    var posY = gCanvas.height - 55
-  } else if (linesCount >= 2) {
-    var posY = 200
-  }
+// // * service
+// function addLine(txt) {
+//   const linesCount = gMeme.lines.length
+//   console.log(linesCount)
+//   const lineTxt = !txt ? 'New Text' : txt
+//   if (linesCount === 1) {
+//     var posY = gCanvas.height - 55
+//   } else if (linesCount >= 2) {
+//     var posY = 200
+//   }
 
-  const line = {
-    txt: `${lineTxt}`,
-    fontSize: 40,
-    font: 'Impact',
-    align: 'left',
-    color: '#fff',
-    outline: '#000',
-    position: { x: 70, y: posY },
-    isDrag: false,
-  }
-  gMeme.lines.push(line)
-  gMeme.selectedLineIdx = gMeme.lines.length - 1
-}
+//   const line = {
+//     txt: `${lineTxt}`,
+//     fontSize: 40,
+//     font: 'Impact',
+//     align: 'left',
+//     color: '#fff',
+//     outline: '#000',
+//     position: { x: 70, y: posY },
+//     isDrag: false,
+//   }
+//   gMeme.lines.push(line)
+//   gMeme.selectedLineIdx = gMeme.lines.length - 1
+// }
