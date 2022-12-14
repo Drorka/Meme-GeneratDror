@@ -102,7 +102,12 @@ function setImg(imgId) {
 }
 
 function setLineTxt(char) {
-  gMeme.lines[0].txt = '' + char
+  gMeme.lines[gMeme.selectedLineIdx].txt = char
+}
+
+function getCurrImg() {
+  let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
+  return currImg.url
 }
 
 function getGImgs() {

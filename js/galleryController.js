@@ -60,7 +60,7 @@ function onImgClick(elImg) {
   // update gmeme
   setImg(elImg.dataset.id)
   // upload img to canvas
-  renderMeme(elImg.src)
+  renderMeme()
   //todo fit canvas size to img
 }
 
@@ -92,10 +92,13 @@ function onDown() {}
 function onUp() {}
 
 // open img in canvas
-function renderMeme(src) {
-  const elImg = new Image() // Create a new html img element
-  elImg.src = src // Send a network req to get that image, define the img src
-  gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+function renderMeme() {
+  // img
+  let currImg = getCurrImg()
+  const img = new Image()
+  img.src = currImg
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+
   // line of text on top
   const meme = getGMeme()
   const { txt, size, align, color } = meme.lines[0]
@@ -107,12 +110,12 @@ function renderMeme(src) {
   gCtx.textBaseline = 'middle'
   gCtx.fillText(txt, 300, 40)
   gCtx.strokeText(txt, 300, 40) // Draws (strokes) a given text at the given (x, y) position.
+  // onDrawText()
 }
 
 // edit meme
 function onInputText(ev) {
   console.log(ev)
-  console.log(ev.data)
-  setLineTxt(ev.data)
+  setLineTxt(ev.target.value)
   renderMeme()
 }
