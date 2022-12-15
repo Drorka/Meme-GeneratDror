@@ -2,14 +2,6 @@
 console.log('controller')
 
 // * general page functions and interactions
-function onInit() {
-  renderGallery()
-  gElCanvas = document.getElementById('my-canvas')
-  gCtx = gElCanvas.getContext('2d')
-  console.log(gCtx)
-  addListeners()
-  resizeCanvas()
-}
 
 // todo
 function onNavClick() {

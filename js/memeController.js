@@ -1,5 +1,5 @@
 'use strict'
-console.log('meme')
+console.log('meme controller')
 
 let gElCanvas
 let gCtx
@@ -7,6 +7,15 @@ let gStartPos
 let isDrag = false
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+function onInit() {
+  renderGallery()
+  gElCanvas = document.getElementById('my-canvas')
+  gCtx = gElCanvas.getContext('2d')
+  console.log(gCtx)
+  addListeners()
+  resizeCanvas()
+}
 
 // * canvas
 // Handle the listeners

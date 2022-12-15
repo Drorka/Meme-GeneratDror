@@ -201,8 +201,8 @@ function getGMeme() {
   return meme
 }
 
+// user memes
 // save meme
-
 function saveMeme(memeUrl) {
   gMeme.id = makeId()
   gMeme.canvasImg = memeUrl
@@ -210,12 +210,8 @@ function saveMeme(memeUrl) {
   saveToStorage(STORAGE_KEY, gUserMemes)
 }
 
-function makeId(length = 3) {
-  const possible =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  var txt = ''
-  for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length))
-  }
-  return `'${txt}'`
+// get user memes
+function getUserMemes() {
+  const userMemes = gUserMemes
+  return userMemes
 }

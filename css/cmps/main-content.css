@@ -4,6 +4,7 @@
   background-color: var(--bgColor);
   padding-top: 8px;
   padding-bottom: 10px;
+  min-height: 90vh;
 }
 
 /* * editor */
