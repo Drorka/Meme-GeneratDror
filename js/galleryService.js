@@ -2,6 +2,7 @@
 console.log('gallery service')
 
 const STORAGE_KEY = 'userMemes'
+const GMEME_STORAGE_KEY = 'gMeme'
 
 let gUserMemes = loadFromStorage(STORAGE_KEY) || []
 
@@ -87,7 +88,7 @@ var gImgs = [
   },
 ]
 
-var gMeme = {
+var gMeme = loadFromStorage(GMEME_STORAGE_KEY) || {
   selectedImgId: '000',
   selectedLineIdx: '0',
   lines: [
@@ -204,10 +205,23 @@ function getGMeme() {
 // user memes
 // save meme
 function saveMeme(memeUrl) {
-  gMeme.id = makeId()
-  gMeme.canvasImg = memeUrl
-  gUserMemes.push(gMeme)
-  saveToStorage(STORAGE_KEY, gUserMemes)
+  if (!gMeme.id) {
+    gMeme.id = makeId()
+    gMeme.canvasImg = memeUrl
+    gUserMemes.push(gMeme)
+    saveToStorage(STORAGE_KEY, gUserMemes)
+  } else {
+    console.log(gUserMemes)
+    let userMeme = gUserMemes.find((userMeme) => userMeme.id === gMeme.id)
+    console.log(userMeme)
+
+    gUserMemes.forEach((userMeme) => {
+      if (userMeme.id === gMeme.id) {
+        userMeme.canvasImg = memeUrl
+      }
+    })
+    saveToStorage(STORAGE_KEY, gUserMemes)
+  }
 }
 
 // get user memes

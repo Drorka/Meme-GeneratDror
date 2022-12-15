@@ -10,6 +10,7 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
   renderGallery()
+  console.log('gmeme', gMeme)
   gElCanvas = document.getElementById('my-canvas')
   gCtx = gElCanvas.getContext('2d')
   console.log(gCtx)
@@ -115,13 +116,17 @@ function getEvPos(ev) {
 // open img in canvas
 function renderMeme() {
   // img
+  renderMemeImg()
+
+  // txt
+  renderMemeTxt()
+}
+
+function renderMemeImg() {
   let currImg = getCurrImg()
   const img = new Image()
   img.src = currImg
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-
-  // txt
-  renderMemeTxt()
 }
 
 function renderMemeTxt() {

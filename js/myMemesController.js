@@ -16,3 +16,18 @@ function renderUserMemes() {
   const elGalleryContainer = document.querySelector('.img-container')
   elGalleryContainer.innerHTML = strHTMLs.join('')
 }
+
+function onUserMemeClick(elMeme) {
+  console.log(elMeme.dataset.id)
+
+  const userMemes = getUserMemes()
+  const userMemeToRender = userMemes.find(
+    (userMeme) => userMeme.id === elMeme.dataset.id
+  )
+  console.log(userMemeToRender)
+
+  gMeme = userMemeToRender
+  saveToStorage(GMEME_STORAGE_KEY, gMeme)
+  console.log(gMeme)
+  window.location.assign('index.html')
+}
