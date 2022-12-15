@@ -1,6 +1,9 @@
 'use strict'
-
 console.log('gallery service')
+
+const STORAGE_KEY = 'userMemes'
+
+let gUserMemes = loadFromStorage(STORAGE_KEY) || []
 
 var gImgs = [
   {
@@ -93,17 +96,37 @@ var gMeme = {
       size: 40,
       align: 'center',
       color: 'white',
+      posX: 0,
+      posY: 0,
     },
     {
       txt: 'Enter text',
       size: 40,
       align: 'center',
       color: 'white',
+      posX: 0,
+      posY: 0,
     },
   ],
 }
 
 // set and update gMeme
+function setGmemeLinePos(canvasCenter) {
+  const { xCenter, yCenter } = canvasCenter
+  gMeme.lines.forEach((line, idx) => {
+    if (idx === 0) {
+      line.posX = xCenter
+      line.posY = yCenter / 3
+    } else if (idx === 1) {
+      line.posX = xCenter
+      line.posY = yCenter * 1.6
+    } else {
+      line.posX = xCenter
+      line.posY = yCenter
+    }
+  })
+}
+
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
@@ -151,10 +174,19 @@ function addLine() {
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
+function removeLine() {
+  const currLineIdx1 = gMeme.lines[gMeme.selectedLineIdx]
+  const currLineIdx2 = gMeme.selectedLineIdx
+  const lines = gMeme.lines
+  console.log(currLineIdx1)
+  console.log(currLineIdx2)
+  console.log(lines)
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+}
+
 // get stuff galley
 function getCurrImg() {
   let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
-  console.log(currImg)
   return currImg.url
 }
 
@@ -167,4 +199,23 @@ function getGImgs() {
 function getGMeme() {
   const meme = gMeme
   return meme
+}
+
+// save meme
+
+function saveMeme(memeUrl) {
+  gMeme.id = makeId()
+  gMeme.canvasImg = memeUrl
+  gUserMemes.push(gMeme)
+  saveToStorage(STORAGE_KEY, gUserMemes)
+}
+
+function makeId(length = 3) {
+  const possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  var txt = ''
+  for (var i = 0; i < length; i++) {
+    txt += possible.charAt(Math.floor(Math.random() * possible.length))
+  }
+  return `'${txt}'`
 }

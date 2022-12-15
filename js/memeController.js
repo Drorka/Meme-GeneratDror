@@ -6,6 +6,8 @@ let gCtx
 let gStartPos
 let isDrag = false
 
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
 // * canvas
 // Handle the listeners
 function addListeners() {
@@ -40,9 +42,66 @@ function addTouchListeners() {
   gElCanvas.addEventListener('touchend', onUp)
 }
 
-function onMove() {}
-function onDown() {}
-function onUp() {}
+function onDown(ev) {
+  // Get the ev pos from mouse or touch
+  const pos = getEvPos(ev)
+  // if (!isLineClicked(pos)) return
+  isDrag = true
+  //Save the pos we start from
+  gStartPos = pos
+  //   draw(pos)
+  console.log(pos)
+  console.log('down')
+  console.log(gStartPos)
+  document.body.style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+  // const { isDrag } = getCircle()
+
+  if (!isDrag) return
+
+  const pos = getEvPos(ev)
+  console.log('move')
+  console.log(pos)
+  // Calc the delta , the diff we moved
+  // const dx = pos.x - gStartPos.x
+  // const dy = pos.y - gStartPos.y
+  //   draw(pos)
+  // moveCircle(dx, dy)
+  // Save the last pos , we remember where we`ve been and move accordingly
+  gStartPos = pos
+  // The canvas is render again after every move
+  // renderCanvas()
+}
+
+function onUp(ev) {
+  isDrag = false
+  console.log('up')
+  document.body.style.cursor = 'auto'
+}
+
+function getEvPos(ev) {
+  // Gets the offset pos , the default pos
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  }
+  // Check if its a touch ev
+  if (TOUCH_EVS.includes(ev.type)) {
+    console.log('touch ev:', ev)
+    //soo we will not trigger the mouse ev
+    ev.preventDefault()
+    //Gets the first touch point
+    ev = ev.changedTouches[0]
+    //Calc the right pos according to the touch screen
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    }
+  }
+  return pos
+}
 
 // open img in canvas
 function renderMeme() {
@@ -54,38 +113,10 @@ function renderMeme() {
 
   // txt
   renderMemeTxt()
-  // line of text on top
-  // const meme = getGMeme()
-  // const txt0 = meme.lines[0].txt
-  // const size0 = meme.lines[0].size
-  // const align0 = meme.lines[0].align
-  // const color0 = meme.lines[0].color
-  // gCtx.lineWidth = 2
-  // gCtx.strokeStyle = 'black'
-  // gCtx.fillStyle = color0
-  // gCtx.font = `${size0}px Impact`
-  // gCtx.textAlign = align0
-  // gCtx.textBaseline = 'middle'
-  // gCtx.fillText(txt0, 300, 40)
-  // gCtx.strokeText(txt0, 300, 40) // Draws (strokes) a given text at the given (x, y) position.
-
-  // // line of text on bottom
-  // const txt1 = meme.lines[1].txt
-  // const size1 = meme.lines[1].size
-  // const align1 = meme.lines[1].align
-  // const color1 = meme.lines[1].color
-  // gCtx.lineWidth = 2
-  // gCtx.strokeStyle = 'black'
-  // gCtx.fillStyle = color1
-  // gCtx.font = `${size1}px Impact`
-  // gCtx.textAlign = align1
-  // gCtx.textBaseline = 'middle'
-  // gCtx.fillText(txt1, 300, 300)
-  // gCtx.strokeText(txt1, 300, 300) // Draws (strokes) a given text at the given (x, y) position.
 }
 
 function renderMemeTxt() {
-  const { xCenter, yCenter } = getCenter()
+  setLinesPos()
   const meme = getGMeme()
   meme.lines.forEach((line, idx) => {
     gCtx.lineWidth = 2
@@ -95,16 +126,21 @@ function renderMemeTxt() {
     gCtx.textAlign = line.align
     gCtx.textBaseline = 'middle'
     if (idx === 0) {
-      gCtx.fillText(line.txt, xCenter, yCenter - gElCanvas.height / 3)
-      gCtx.strokeText(line.txt, xCenter, yCenter - gElCanvas.height / 3)
+      gCtx.fillText(line.txt, line.posX, line.posY)
+      gCtx.strokeText(line.txt, line.posX, line.posY)
     } else if (idx === 1) {
-      gCtx.fillText(line.txt, xCenter, yCenter + gElCanvas.height / 3)
-      gCtx.strokeText(line.txt, xCenter, yCenter + gElCanvas.height / 3)
+      gCtx.fillText(line.txt, line.posX, line.posY)
+      gCtx.strokeText(line.txt, line.posX, line.posY)
     } else {
-      gCtx.fillText(line.txt, xCenter, yCenter)
-      gCtx.strokeText(line.txt, xCenter, yCenter)
+      gCtx.fillText(line.txt, line.posX, line.posY)
+      gCtx.strokeText(line.txt, line.posX, line.posY)
     }
   })
+}
+
+function setLinesPos() {
+  const canvasCenter = getCenter()
+  setGmemeLinePos(canvasCenter)
 }
 
 function getCenter() {
@@ -117,7 +153,6 @@ function getCenter() {
 
 // edit meme
 function onInputText(ev) {
-  console.log(ev)
   setLineTxt(ev.target.value)
   renderMeme()
 }
@@ -155,12 +190,8 @@ function onRemoveLine() {
   renderMeme()
 }
 
-function removeLine() {
-  const currLineIdx1 = gMeme.lines[gMeme.selectedLineIdx]
-  const currLineIdx2 = gMeme.selectedLineIdx
-  const lines = gMeme.lines
-  console.log(currLineIdx1)
-  console.log(currLineIdx2)
-  console.log(lines)
-  gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+// saving to storage
+function onSaveMeme() {
+  const memeUrl = gElCanvas.toDataURL()
+  saveMeme(memeUrl)
 }
