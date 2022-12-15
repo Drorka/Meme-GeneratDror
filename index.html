@@ -94,7 +94,11 @@
           <button onclick="onAddTextLine()" class="etidor-btn" title="Add line">
             add
           </button>
-          <button class="etidor-btn" title="Delete line">
+          <button
+            onclick="onRemoveLine()"
+            class="etidor-btn"
+            title="Delete line"
+          >
             <i class="fa-solid fa-trash"></i>
           </button>
           <button class="etidor-btn" title="Change color">
@@ -149,7 +153,9 @@
 
     <!-- scripts -->
     <script src="js/storageService.js"></script>
+    <!-- <script src="js/memeService.js"></script> -->
     <script src="js/galleryService.js"></script>
     <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
   </body>
 </html>

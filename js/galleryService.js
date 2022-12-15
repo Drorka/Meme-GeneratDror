@@ -1,6 +1,6 @@
 'use strict'
 
-console.log('service')
+console.log('gallery service')
 
 var gImgs = [
   {
@@ -123,6 +123,7 @@ function setTxtColor(clr) {
 function switchLines() {
   if (!gMeme.lines.length) return
   // On last line go back to first line
+  if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
   if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
     gMeme.selectedLineIdx = 0
   } else {
@@ -150,9 +151,10 @@ function addLine() {
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
-// get stuff
+// get stuff galley
 function getCurrImg() {
   let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
+  console.log(currImg)
   return currImg.url
 }
 
@@ -161,6 +163,7 @@ function getGImgs() {
   return imgs
 }
 
+// get stuff meme
 function getGMeme() {
   const meme = gMeme
   return meme
