@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/fdcbe2ac67.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/style.css" />
     <title>Meme GeneratDror</title>
   </head>
@@ -38,32 +42,79 @@
             type="text"
             placeholder="Enter text..."
           />
-          <button onclick="onChangeTxtSize(+1)" class="etidor-btn">
-            text+
+
+          <button
+            onclick="onChangeTxtSize(+1)"
+            class="etidor-btn"
+            title="Increase font"
+          >
+            <i class="fa-solid fa-plus"></i>
           </button>
-          <button onclick="onChangeTxtSize(-1)" class="etidor-btn">
-            text-
+          <button
+            onclick="onChangeTxtSize(-1)"
+            class="etidor-btn"
+            title="Decrease font"
+          >
+            <i class="fa-solid fa-minus"></i>
           </button>
-          <button class="etidor-btn">L</button>
-          <button class="etidor-btn">C</button>
-          <button class="etidor-btn">R</button>
-          <button class="etidor-btn">up</button>
-          <button class="etidor-btn">down</button>
-          <button onclick="onSwitchLines()" class="etidor-btn">switch</button>
-          <button onclick="onAddTextLine()" class="etidor-btn">add</button>
-          <button class="etidor-btn">del</button>
-          <button class="etidor-btn">
-            <input
-              oninput="onChangeColor(this.value)"
-              type="color"
-              name="fillColor"
-              class="color-input"
-            />
-            clr
+          <button
+            onclick="onChangeTxtDir('right')"
+            class="etidor-btn"
+            title="Align left"
+          >
+            <i class="fa-solid fa-align-left"></i>
           </button>
-          <button class="etidor-btn">dnld</button>
-          <button class="etidor-btn">save</button>
-          <button class="etidor-btn">share</button>
+          <button
+            onclick="onChangeTxtDir('center')"
+            class="etidor-btn"
+            title="Align center"
+          >
+            <i class="fa-solid fa-align-center"></i>
+          </button>
+          <button
+            onclick="onChangeTxtDir('left')"
+            class="etidor-btn"
+            title="Align right"
+          >
+            <i class="fa-solid fa-align-right"></i>
+          </button>
+          <button class="etidor-btn" title="Previous line">
+            <i class="fa-solid fa-up-long"></i>
+          </button>
+          <button class="etidor-btn" title="Next line">
+            <i class="fa-solid fa-down-long"></i>
+          </button>
+          <button
+            onclick="onSwitchLines()"
+            class="etidor-btn"
+            title="Switch line"
+          >
+            <i class="fa-solid fa-up-down"></i>
+          </button>
+          <button onclick="onAddTextLine()" class="etidor-btn" title="Add line">
+            add
+          </button>
+          <button class="etidor-btn" title="Delete line">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+          <button class="etidor-btn" title="Change color">
+            <i class="fa-solid fa-fill-drip"
+              ><input
+                oninput="onChangeColor(this.value)"
+                type="color"
+                name="fillColor"
+                class="color-input"
+            /></i>
+          </button>
+          <button class="etidor-btn" title="Download">
+            <i class="fa-solid fa-download"></i>
+          </button>
+          <button class="etidor-btn" title="Save">
+            <i class="fa-solid fa-floppy-disk"></i>
+          </button>
+          <button class="etidor-btn" title="Share">
+            <i class="fa-solid fa-share-nodes"></i>
+          </button>
         </div>
       </section>
 

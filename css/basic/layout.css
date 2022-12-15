@@ -1,18 +1,46 @@
-.main-layout > *:not(.full) {
-  /* max-width: 980px; */
+/* ///////////////////////////////// */
+/*  *mobile first */
+/* .main-layout > *:not(.full) {
   max-width: var(--s);
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
-@media (min-width: 780px) {
+/* @media (min-width: 780px) {
   .main-layout > *:not(.full) {
     max-width: var(--m);
   }
-}
+} */
 
-@media (min-width: 1060px) {
+/* @media (min-width: 1060px) {
   .main-layout > *:not(.full) {
     max-width: var(--l);
   }
+} */
+
+
+/* ///////////////////// */
+/*  *design workflow */
+/* desktop */
+.main-layout > *:not(.full) {
+    max-width: var(--l);
+	margin-left: auto;
+	margin-right: auto;
 }
+
+  /* tablet */
+@media (max-width: 1060px) {
+	.main-layout > *:not(.full) {
+		max-width: var(--m);
+	}
+}
+
+ /* mobile */
+@media (max-width: 780px) {
+	.main-layout > *:not(.full) {
+		/* max-width: 980px; */
+		max-width: var(--s);
+		
+	}
+}
+

@@ -132,6 +132,24 @@ function switchLines() {
   console.log(gMeme.selectedLineIdx)
 }
 
+function setTxtDir(dir) {
+  gMeme.lines[gMeme.selectedLineIdx].align = dir
+}
+
+function addLine() {
+  const linesCount = gMeme.lines.length
+  console.log(linesCount)
+
+  const line = {
+    txt: 'Enter text',
+    fontSize: 40,
+    align: 'center',
+    color: 'white',
+  }
+  gMeme.lines.push(line)
+  gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
 // get stuff
 function getCurrImg() {
   let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)

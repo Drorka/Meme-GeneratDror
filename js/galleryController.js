@@ -75,6 +75,17 @@ function addListeners() {
   })
 }
 
+function resizeCanvas() {
+  const elContainer = document.querySelector('.canvas-container')
+  // Note: changing the canvas dimension this way clears the canvas
+  console.log(elContainer.offsetWidth)
+  gElCanvas.width = elContainer.offsetWidth - 20
+  console.log(gElCanvas.width)
+  // Unless needed, better keep height fixed.
+  gElCanvas.height = elContainer.offsetHeight - 20
+  renderMeme()
+}
+
 function addMouseListeners() {
   gElCanvas.addEventListener('mousemove', onMove)
   gElCanvas.addEventListener('mousedown', onDown)
@@ -99,6 +110,7 @@ function renderMeme() {
   img.src = currImg
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
+  // txt
   renderMemeTxt()
   // line of text on top
   // const meme = getGMeme()
@@ -131,6 +143,7 @@ function renderMeme() {
 }
 
 function renderMemeTxt() {
+  const { xCenter, yCenter } = getCenter()
   const meme = getGMeme()
   meme.lines.forEach((line, idx) => {
     gCtx.lineWidth = 2
@@ -140,16 +153,24 @@ function renderMemeTxt() {
     gCtx.textAlign = line.align
     gCtx.textBaseline = 'middle'
     if (idx === 0) {
-      gCtx.fillText(line.txt, 300, 40)
-      gCtx.strokeText(line.txt, 300, 40)
+      gCtx.fillText(line.txt, xCenter, yCenter - gElCanvas.height / 3)
+      gCtx.strokeText(line.txt, xCenter, yCenter - gElCanvas.height / 3)
     } else if (idx === 1) {
-      gCtx.fillText(line.txt, 300, 300)
-      gCtx.strokeText(line.txt, 300, 300)
+      gCtx.fillText(line.txt, xCenter, yCenter + gElCanvas.height / 3)
+      gCtx.strokeText(line.txt, xCenter, yCenter + gElCanvas.height / 3)
     } else {
-      gCtx.fillText(line.txt, 300, 300)
-      gCtx.strokeText(line.txt, 150, 150)
+      gCtx.fillText(line.txt, xCenter, yCenter)
+      gCtx.strokeText(line.txt, xCenter, yCenter)
     }
   })
+}
+
+function getCenter() {
+  const center = {
+    xCenter: gElCanvas.width / 2,
+    yCenter: gElCanvas.height / 2,
+  }
+  return center
 }
 
 // edit meme
@@ -176,33 +197,13 @@ function onSwitchLines() {
   renderMeme()
 }
 
-// // * add line
-// function onAddTextLine() {
-//   addLine()
-//   renderMeme()
-// }
+function onChangeTxtDir(dir) {
+  console.log(dir)
+  setTxtDir(dir)
+  renderMeme()
+}
 
-// // * service
-// function addLine(txt) {
-//   const linesCount = gMeme.lines.length
-//   console.log(linesCount)
-//   const lineTxt = !txt ? 'New Text' : txt
-//   if (linesCount === 1) {
-//     var posY = gCanvas.height - 55
-//   } else if (linesCount >= 2) {
-//     var posY = 200
-//   }
-
-//   const line = {
-//     txt: `${lineTxt}`,
-//     fontSize: 40,
-//     font: 'Impact',
-//     align: 'left',
-//     color: '#fff',
-//     outline: '#000',
-//     position: { x: 70, y: posY },
-//     isDrag: false,
-//   }
-//   gMeme.lines.push(line)
-//   gMeme.selectedLineIdx = gMeme.lines.length - 1
-// }
+function onAddTextLine() {
+  addLine()
+  renderMeme()
+}
