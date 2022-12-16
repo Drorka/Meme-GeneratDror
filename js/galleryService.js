@@ -5,6 +5,7 @@ const STORAGE_KEY = 'userMemes'
 const GMEME_STORAGE_KEY = 'gMeme'
 
 let gUserMemes = loadFromStorage(STORAGE_KEY) || []
+let gFilterBy = { searchTxt: '' }
 
 var gImgs = [
   {
@@ -218,7 +219,11 @@ function getCurrImg() {
 
 function getGImgs() {
   const imgs = gImgs
-  return imgs
+  if (!gFilterBy.searchTxt) return imgs
+  let filteredImgs = gImgs.filter((img) =>
+    img.keywords.find((kw) => kw.includes(gFilterBy.searchTxt))
+  )
+  return filteredImgs
 }
 
 // get stuff meme
@@ -256,4 +261,16 @@ function doUploadImg(imgDataUrl, onSuccess) {
       console.log('url:', url)
       onSuccess(url)
     })
+}
+
+// * gallery filters
+// set filter
+function onSetFilterBy(filterBy) {
+  filterBy = setMemesFilter(filterBy)
+  renderGallery()
+}
+
+function setMemesFilter(filterBy = {}) {
+  if (filterBy.searchTxt !== undefined) gFilterBy.searchTxt = filterBy.searchTxt
+  return gFilterBy
 }

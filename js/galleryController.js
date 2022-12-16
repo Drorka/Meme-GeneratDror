@@ -12,6 +12,7 @@ function onNavClick() {
 // * gallery interactions
 
 function renderGallery() {
+  console.log('render gallery')
   const imgs = getGImgs()
   const strHTMLs = imgs.map(
     (img) =>
@@ -22,9 +23,12 @@ function renderGallery() {
   elGalleryContainer.innerHTML = strHTMLs.join('')
 }
 
-// todo
-function onSearchTxt() {
-  // filter imgs by keywords matching the input
+// recieve user search input
+function onSetFilterByTxt(val) {
+  console.log(val)
+  const searchTxt = val.toLowerCase()
+  onSetFilterBy({ searchTxt: searchTxt })
+  renderGallery()
 }
 
 // todo
