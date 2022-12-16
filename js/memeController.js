@@ -182,6 +182,20 @@ function getCenter() {
   return center
 }
 
+function getImgNatDimensions(img) {
+  var imgHeight = img.naturalHeight
+  var imgWidth = img.naturalWidth
+  let imgNatDimensions = [imgHeight, imgWidth]
+  return imgNatDimensions
+}
+
+function setCanvasSize(imgNatDimensions) {
+  let imgH = imgNatDimensions[0]
+  let imgW = imgNatDimensions[1]
+  gElCanvas.width = 600
+  gElCanvas.height = (imgH * gElCanvas.width) / imgW
+}
+
 // edit meme
 function onInputText(ev) {
   setLineTxt(ev.target.value)
@@ -227,16 +241,12 @@ function onSaveMeme() {
   saveMeme(memeUrl)
 }
 
-function getImgNatDimensions(img) {
-  var imgHeight = img.naturalHeight
-  var imgWidth = img.naturalWidth
-  let imgNatDimensions = [imgHeight, imgWidth]
-  return imgNatDimensions
-}
-
-function setCanvasSize(imgNatDimensions) {
-  let imgH = imgNatDimensions[0]
-  let imgW = imgNatDimensions[1]
-  gElCanvas.width = 600
-  gElCanvas.height = (imgH * gElCanvas.width) / imgW
+// download meme
+function downloadCanvas(elLink) {
+  //Protect the image soo attacker could not download imgs from diff domain
+  const data = gElCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
+  //This protects users from having private data exposed by using images
+  // to pull information from remote web sites without permission.
+  elLink.href = data
+  elLink.download = 'my-img.jpg'
 }
