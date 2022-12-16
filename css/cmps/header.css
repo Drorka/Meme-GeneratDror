@@ -52,6 +52,10 @@
 
  /* mobile */
 @media (max-width: 780px) {
+  .logo {
+    font-size: 2em;
+  }
+
   .main-header {
     position: fixed;
     width: 100%;
