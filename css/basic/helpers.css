@@ -93,8 +93,8 @@
 		gap: 6px;
 		margin: 0 auto;
 		padding: 2.5px;
-		grid-template-columns: repeat(5, 35px);
-		grid-template-rows: repeat(5, 35px);
+		grid-template-columns: repeat(5, 50px);
+		grid-template-rows: repeat(5, 50px);
 		place-content: center;
 		/* max-width: 290px; */
 	}

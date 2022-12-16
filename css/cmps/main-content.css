@@ -21,11 +21,11 @@
 }
 
 canvas {
-	border: 2px solid var(--outlines);
+	/* border: 2px solid var(--outlines); */
 }
 
 .editor-panel {
-	border: 2px solid var(--outlines);
+	/* border: 2px solid var(--outlines); */
 }
 
 .input-txt {
@@ -182,6 +182,12 @@ canvas {
 
 	.main-editor {
 		max-width: var(--s);
+	}
+
+	.canvas-container {
+		display: flex;
+		margin: auto;
+		justify-content: center;
 	}
 
 	canvas {

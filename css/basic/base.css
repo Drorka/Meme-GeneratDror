@@ -37,11 +37,26 @@ button {
     font-family: inherit;
     cursor: pointer;
     font-size: 1em;
+	background-color: var(--txt);
+	color: var(--bgColor);
+	/* border: 1px solid var(--outlines); */
+	border: none;
+	border-radius: 7px;
+}
+
+button:hover {
+	color: var(--headerFooterBg);
+	border: 2px solid var(--headerFooterBg);
+
+}
+
+button:hover a {
+	color: var(--headerFooterBg);
 }
 
 a {
 	text-decoration: none;
-	color: black;
+	color: var(--bgColor);
 }
 
 

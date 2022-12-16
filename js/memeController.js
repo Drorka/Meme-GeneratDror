@@ -235,7 +235,7 @@ function onRemoveLine() {
   renderMeme()
 }
 
-// saving to storage
+// save meme
 function onSaveMeme() {
   const memeUrl = gElCanvas.toDataURL()
   saveMeme(memeUrl)
@@ -243,10 +243,26 @@ function onSaveMeme() {
 
 // download meme
 function downloadCanvas(elLink) {
-  //Protect the image soo attacker could not download imgs from diff domain
+  //Protect the image so attacker could not download imgs from diff domain
   const data = gElCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
   //This protects users from having private data exposed by using images
   // to pull information from remote web sites without permission.
   elLink.href = data
   elLink.download = 'my-img.jpg'
+}
+
+// share meme
+function onUploadImg() {
+  const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
+
+  // A function to be called if request succeeds
+  function onSuccess(uploadedImgUrl) {
+    // Encode the instance of certain characters in the url
+    const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`
+    )
+  }
+  // Send the image to the server
+  doUploadImg(imgDataUrl, onSuccess)
 }
