@@ -20,9 +20,10 @@
 }
 
 .logo {
-  font-family: Tahoma;
+  font-family: Raleway;
   letter-spacing: 0.8px;
   font-size: 2.5em;
+  font-weight: 700;
 }
 
 .logo a {

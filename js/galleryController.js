@@ -1,16 +1,6 @@
 'use strict'
 console.log('controller')
 
-// * general page functions and interactions
-
-// todo
-function onNavClick() {
-  // about
-  // go to about page
-}
-
-// * gallery interactions
-
 function renderGallery() {
   console.log('render gallery')
   const imgs = getGImgs()
@@ -36,7 +26,6 @@ function onTagFilter() {
   // filter imgs by keywords matching the tag keyword
 }
 
-// todo
 function onImgClick(elImg) {
   console.log(elImg)
   // reset gMeme to clean all user inputs
@@ -48,7 +37,6 @@ function onImgClick(elImg) {
   console.log(gMeme)
   // upload img to canvas
   renderMeme()
-  //todo fit canvas size to img
   // display editor
   openEditor()
 }

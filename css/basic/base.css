@@ -3,7 +3,7 @@
 }
 
 html {
-    font-family: Segoe UI;
+    font-family: Raleway, sans-serif;
     color: var(--txt);
     /* line-height: 1.25em; */
     letter-spacing: 0.48px;
@@ -46,9 +46,8 @@ button {
 
 button:hover :not(.menu-toggle-btn) {
 	color: var(--headerFooterBg);
-	border: 2px solid var(--headerFooterBg);
-
 }
+
 
 button:hover a {
 	color: var(--headerFooterBg);

@@ -8,6 +8,7 @@
       src="https://kit.fontawesome.com/fdcbe2ac67.js"
       crossorigin="anonymous"
     ></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <title>Meme GeneratDror</title>
   </head>
@@ -117,8 +118,15 @@
             /></i>
           </button>
           <button class="etidor-btn upld" title="Upload image">
-            <a href="#" onclick1="onUploadImg()" download="">
-              <i class="fa-solid fa-upload"></i>
+              <i class="fa-solid fa-upload">
+					<input
+					id = 'image'  
+					type="file"
+					class="file-input btn"
+					name="image"
+					onchange="onImgInput(event)"
+					/>
+              </i>
             </a>
           </button>
           <button class="etidor-btn dnld" title="Download">

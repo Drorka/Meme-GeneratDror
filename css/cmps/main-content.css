@@ -39,6 +39,10 @@ canvas {
 	height: 0;
 }
 
+.file-input{
+	display: none;
+}
+
 /* * filters and search */
 .filters {}
 
@@ -179,7 +183,7 @@ canvas {
 	.main-content {
 		padding-top: 70px;
 		padding-bottom: 10px;
-	  }
+	}
 
 	.main-editor {
 		max-width: var(--s);
