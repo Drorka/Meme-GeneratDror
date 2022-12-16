@@ -44,7 +44,7 @@ button {
 	border-radius: 7px;
 }
 
-button:hover {
+button:hover :not(.menu-toggle-btn) {
 	color: var(--headerFooterBg);
 	border: 2px solid var(--headerFooterBg);
 

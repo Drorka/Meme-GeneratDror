@@ -53,6 +53,7 @@ canvas {
     align-self: center;
 	width: 80%;
 	height: 40%;
+	min-height: 1.3rem;
 	border-radius: 15px;
 	background-color:rgba(0, 0, 0, 0.5);
 	color: var(--txt);
@@ -176,7 +177,7 @@ canvas {
  /* mobile */
 @media (max-width: 780px) {
 	.main-content {
-		padding-top: 60px;
+		padding-top: 70px;
 		padding-bottom: 10px;
 	  }
 
@@ -191,7 +192,7 @@ canvas {
 	}
 
 	canvas {
-		max-width: 600px;
+		max-width: 400px;
 		max-height: 230px;
 	}
 

@@ -52,3 +52,8 @@ function onImgClick(elImg) {
   // display editor
   openEditor()
 }
+
+// mobile - hamburger menu
+function toggleMenu() {
+  document.body.classList.toggle('menu-open')
+}
