@@ -8,6 +8,10 @@
 }
 
 /* * editor */
+.hide {
+	display: none;
+}
+
 .main-editor {
 	/* max-width: var(--s); */
 }
@@ -87,6 +91,26 @@ canvas {
 	outline: 1px solid var(--outlines);
 }
 
+/* *user memes gallery */
+.remove-meme-btn {
+	position:relative;
+	width: 30px;
+	height: 30px;
+	left:43%;
+	top: -120px;
+	text-align: center;
+	opacity:0;
+	
+	transition: opacity .35s ease;
+}
+
+.user-meme-container:hover .remove-meme-btn {
+	opacity:1;
+}
+
+.user-meme:hover {
+	opacity: 0.8;
+}
 
 /* * original settings */
 

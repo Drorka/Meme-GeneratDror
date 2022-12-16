@@ -10,7 +10,12 @@ function renderUserMemes() {
   console.log(userMemes)
   const strHTMLs = userMemes.map(
     (userMeme) =>
-      `<img onclick="onUserMemeClick(this)" class="card-img" data-id="${userMeme.id}" src="${userMeme.canvasImg}" />`
+      `
+	  <div class="user-meme-container">
+	  	<img onclick="onUserMemeClick(this)" class="card-img user-meme" data-id="${userMeme.id}" src="${userMeme.canvasImg}" />
+	  	<button onclick="onRemoveUserMeme(this)" data-id="${userMeme.id}" class="remove-meme-btn"><i class="fa-solid fa-trash"></i></button>
+	  </div> 
+	  `
   )
 
   const elGalleryContainer = document.querySelector('.img-container')
@@ -29,5 +34,23 @@ function onUserMemeClick(elMeme) {
   gMeme = userMemeToRender
   saveToStorage(GMEME_STORAGE_KEY, gMeme)
   console.log(gMeme)
+
   window.location.assign('index.html')
+}
+
+function onRemoveUserMeme(elBtn) {
+  console.log(elBtn)
+  removeUserMeme(elBtn.dataset.id)
+  renderUserMemes()
+}
+
+function removeUserMeme(userMemeId) {
+  const userMemeIdx = gUserMemes.findIndex(
+    (userMeme) => userMemeId === userMeme.id
+  )
+  console.log(userMemeIdx)
+  gUserMemes.splice(userMemeIdx, 1)
+  saveToStorage(STORAGE_KEY, gUserMemes)
+
+  window.localStorage.removeItem(GMEME_STORAGE_KEY)
 }

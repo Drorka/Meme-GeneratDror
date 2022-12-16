@@ -5,14 +5,6 @@ console.log('controller')
 
 // todo
 function onNavClick() {
-  // gallery:
-  // go to gallery page
-  // close editor if open
-  // logo
-  // go to gallery page
-  // close editor if open
-  // my memes
-  // go to my memes page
   // about
   // go to about page
 }
@@ -43,10 +35,16 @@ function onTagFilter() {
 // todo
 function onImgClick(elImg) {
   console.log(elImg)
-  // todo display editor
+  // reset gMeme to clean all user inputs
+  resetGMeme()
+  // clean gmemestorage so it won't load user existing meme
+  window.localStorage.removeItem(GMEME_STORAGE_KEY)
   // update gmeme
   setImg(elImg.dataset.id)
+  console.log(gMeme)
   // upload img to canvas
   renderMeme()
   //todo fit canvas size to img
+  // display editor
+  openEditor()
 }

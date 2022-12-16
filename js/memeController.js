@@ -16,6 +16,7 @@ function onInit() {
   console.log(gCtx)
   addListeners()
   resizeCanvas()
+  renderUserMemeToCanvas()
 }
 
 // * canvas
@@ -113,20 +114,36 @@ function getEvPos(ev) {
   return pos
 }
 
+function renderUserMemeToCanvas() {
+  // check if the gmeme storage exist and open the editor if it does
+  if (loadFromStorage(GMEME_STORAGE_KEY)) openEditor()
+}
+
+function openEditor() {
+  document.querySelector('.main-editor').classList.remove('hide')
+}
+
 // open img in canvas
 function renderMeme() {
   // img
   renderMemeImg()
 
   // txt
-  renderMemeTxt()
+  renderMemeImg().onload = () => {
+    renderMemeTxt()
+  }
 }
 
 function renderMemeImg() {
   let currImg = getCurrImg()
   const img = new Image()
   img.src = currImg
-  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  const imgNatDimensions = getImgNatDimensions(img)
+  setCanvasSize(imgNatDimensions)
+  img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+  }
+  return img
 }
 
 function renderMemeTxt() {
@@ -208,4 +225,18 @@ function onRemoveLine() {
 function onSaveMeme() {
   const memeUrl = gElCanvas.toDataURL()
   saveMeme(memeUrl)
+}
+
+function getImgNatDimensions(img) {
+  var imgHeight = img.naturalHeight
+  var imgWidth = img.naturalWidth
+  let imgNatDimensions = [imgHeight, imgWidth]
+  return imgNatDimensions
+}
+
+function setCanvasSize(imgNatDimensions) {
+  let imgH = imgNatDimensions[0]
+  let imgW = imgNatDimensions[1]
+  gElCanvas.width = 600
+  gElCanvas.height = (imgH * gElCanvas.width) / imgW
 }

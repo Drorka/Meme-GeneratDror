@@ -128,6 +128,31 @@ function setGmemeLinePos(canvasCenter) {
   })
 }
 
+function resetGMeme() {
+  gMeme = loadFromStorage(GMEME_STORAGE_KEY) || {
+    selectedImgId: '000',
+    selectedLineIdx: '0',
+    lines: [
+      {
+        txt: 'Enter text',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        posX: 0,
+        posY: 0,
+      },
+      {
+        txt: 'Enter text',
+        size: 40,
+        align: 'center',
+        color: 'white',
+        posX: 0,
+        posY: 0,
+      },
+    ],
+  }
+}
+
 function setImg(imgId) {
   gMeme.selectedImgId = imgId
 }
@@ -205,23 +230,11 @@ function getGMeme() {
 // user memes
 // save meme
 function saveMeme(memeUrl) {
-  if (!gMeme.id) {
-    gMeme.id = makeId()
-    gMeme.canvasImg = memeUrl
-    gUserMemes.push(gMeme)
-    saveToStorage(STORAGE_KEY, gUserMemes)
-  } else {
-    console.log(gUserMemes)
-    let userMeme = gUserMemes.find((userMeme) => userMeme.id === gMeme.id)
-    console.log(userMeme)
-
-    gUserMemes.forEach((userMeme) => {
-      if (userMeme.id === gMeme.id) {
-        userMeme.canvasImg = memeUrl
-      }
-    })
-    saveToStorage(STORAGE_KEY, gUserMemes)
-  }
+  gMeme.id = makeId()
+  gMeme.canvasImg = memeUrl
+  let currUserMeme = { ...gMeme }
+  gUserMemes.push(currUserMeme)
+  saveToStorage(STORAGE_KEY, gUserMemes)
 }
 
 // get user memes
