@@ -21,9 +21,17 @@ function onSetFilterByTxt(val) {
   renderGallery()
 }
 
-// todo
-function onTagFilter() {
-  // filter imgs by keywords matching the tag keyword
+// recieve user tag click
+function onSetFilterByTag(elTag) {
+  if (elTag.innerText === '#All') {
+    onSetFilterBy({ searchTxt: '' })
+    renderGallery()
+  } else {
+    const tag = elTag.innerText.substring(1).toLowerCase()
+    console.log(tag)
+    onSetFilterBy({ searchTxt: tag })
+    renderGallery()
+  }
 }
 
 function onImgClick(elImg) {
