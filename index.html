@@ -45,63 +45,67 @@
 
           <button
             onclick="onChangeTxtSize(+1)"
-            class="etidor-btn"
+            class="etidor-btn size-up"
             title="Increase font"
           >
             <i class="fa-solid fa-plus"></i>
           </button>
           <button
             onclick="onChangeTxtSize(-1)"
-            class="etidor-btn"
+            class="etidor-btn size-down"
             title="Decrease font"
           >
             <i class="fa-solid fa-minus"></i>
           </button>
           <button
             onclick="onChangeTxtDir('right')"
-            class="etidor-btn"
+            class="etidor-btn dir-r"
             title="Align left"
           >
             <i class="fa-solid fa-align-left"></i>
           </button>
           <button
             onclick="onChangeTxtDir('center')"
-            class="etidor-btn"
+            class="etidor-btn dir-c"
             title="Align center"
           >
             <i class="fa-solid fa-align-center"></i>
           </button>
           <button
             onclick="onChangeTxtDir('left')"
-            class="etidor-btn"
+            class="etidor-btn dir-l"
             title="Align right"
           >
             <i class="fa-solid fa-align-right"></i>
           </button>
-          <button class="etidor-btn" title="Previous line">
+          <button class="etidor-btn prev-line" title="Previous line">
             <i class="fa-solid fa-up-long"></i>
           </button>
-          <button class="etidor-btn" title="Next line">
+          <button class="etidor-btn next-line" title="Next line">
             <i class="fa-solid fa-down-long"></i>
           </button>
           <button
             onclick="onSwitchLines()"
-            class="etidor-btn"
+            class="etidor-btn switch-lines"
             title="Switch line"
           >
             <i class="fa-solid fa-up-down"></i>
           </button>
-          <button onclick="onAddTextLine()" class="etidor-btn" title="Add line">
+          <button
+            onclick="onAddTextLine()"
+            class="etidor-btn add-line"
+            title="Add line"
+          >
             add
           </button>
           <button
             onclick="onRemoveLine()"
-            class="etidor-btn"
+            class="etidor-btn remove-line"
             title="Delete line"
           >
             <i class="fa-solid fa-trash"></i>
           </button>
-          <button class="etidor-btn" title="Change color">
+          <button class="etidor-btn fill-color" title="Change color">
             <i class="fa-solid fa-fill-drip"
               ><input
                 oninput="onChangeColor(this.value)"
@@ -112,15 +116,24 @@
                 height="0px"
             /></i>
           </button>
-          <button class="etidor-btn" title="Download">
+          <button class="etidor-btn upld" title="Upload image">
+            <a href="#" onclick1="onUploadImg()" download="">
+              <i class="fa-solid fa-upload"></i>
+            </a>
+          </button>
+          <button class="etidor-btn dnld" title="Download">
             <a href="#" onclick="downloadCanvas(this)" download="">
               <i class="fa-solid fa-download"></i>
             </a>
           </button>
-          <button onclick="onSaveMeme()" class="etidor-btn" title="Save">
+          <button onclick="onSaveMeme()" class="etidor-btn save" title="Save">
             <i class="fa-solid fa-floppy-disk"></i>
           </button>
-          <button onclick="onUploadImg()" class="etidor-btn" title="Share">
+          <button
+            onclick="onUploadImg()"
+            class="etidor-btn share"
+            title="Share"
+          >
             <i class="fa-solid fa-share-nodes"></i>
           </button>
         </div>
@@ -138,9 +151,9 @@
         </div>
         <div class="tags">
           <ul class="clean-list flex tag-list">
-            <li>Tutit</li>
-            <li>Milel</li>
-            <li>Ronando</li>
+            <li>#Tutit</li>
+            <li>#Milel</li>
+            <li>#Ronando</li>
           </ul>
         </div>
       </div>

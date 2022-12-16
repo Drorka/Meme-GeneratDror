@@ -31,11 +31,32 @@
 }
 
 
+ /*  *design workflow */
+/* desktop */
+.main-header .main-nav a {
+  min-width: 130px;
+  min-height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-toggle-btn {
+  display: none;
+}
+
+  /* tablet */
+@media (max-width: 1060px) {
+
+}
+
+ /* mobile */
 @media (max-width: 780px) {
   .main-header {
     position: fixed;
     width: 100%;
     z-index: 1;
+    height: 60px;
   }
   .main-header .main-nav li:hover {
     color: var(--clr1);
@@ -76,24 +97,6 @@
     font-size: 2rem;
     color: white;
     cursor: pointer;
-  }
-}
-
-@media (min-width: 780px) {
-
-  .main-header .main-nav a {
-    min-width: 130px;
-    min-height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .nav-list {
-    /* align-items: center; */
-  }
-
-  .menu-toggle-btn {
-    display: none;
+    display: block;
   }
 }

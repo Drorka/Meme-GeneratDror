@@ -175,10 +175,10 @@ canvas {
 
  /* mobile */
 @media (max-width: 780px) {
-	/* .main-content {
-		padding-top: 8px;
+	.main-content {
+		padding-top: 60px;
 		padding-bottom: 10px;
-	  } */
+	  }
 
 	.main-editor {
 		max-width: var(--s);
@@ -197,5 +197,68 @@ canvas {
 
 	.input-txt {
 		grid-column: 1 / 8;
+	}
+
+	.size-up {
+		grid-column: 2 / 3;
+	
+	}
+	
+	.size-down {
+		grid-column: 3 / 4;
+	
+	}
+	
+	.dir-r {
+		grid-column: 4 / 5;
+	
+	}
+	
+	.dir-c {
+		grid-column: 5 / 6;
+	}
+	
+	.dir-l {
+		grid-column: 6 / 7;
+	}
+	
+	.prev-line {
+		grid-column: 2 / 3;
+	}
+	
+	.next-line {
+		grid-column: 3 / 4;
+	}
+	
+	.switch-lines {
+		grid-column: 4 / 5;
+	}
+	
+	.add-line {
+		grid-column: 5 / 6;
+	}
+	
+	.remove-line {
+		grid-column: 6 / 7;
+	}
+	
+	.fill-color {
+		grid-column: 2 / 3;
+	}
+	
+	.dnld {
+		grid-column: 3 / 4;
+	}
+
+	.dnld {
+		grid-column: 4 / 5;
+	}
+	
+	.save {
+		grid-column: 5 / 6;
+	}
+	
+	.share {
+		grid-column: 6 / 7;
 	}
 }
