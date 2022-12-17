@@ -5,6 +5,7 @@ let gElCanvas
 let gCtx
 let gStartPos
 let isDrag = false
+// let gIsUserImg = false
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
@@ -53,6 +54,7 @@ function addTouchListeners() {
   gElCanvas.addEventListener('touchend', onUp)
 }
 
+// todo handle drag&drop and on-canvas editing
 function onDown(ev) {
   // Get the ev pos from mouse or touch
   const pos = getEvPos(ev)
@@ -114,6 +116,7 @@ function getEvPos(ev) {
   return pos
 }
 
+// * rendering to the canvas
 function renderUserMemeToCanvas() {
   // check if the gmeme storage exist and open the editor if it does
   if (loadFromStorage(GMEME_STORAGE_KEY)) openEditor()
@@ -128,7 +131,7 @@ function renderMeme() {
   // img
   renderMemeImg()
 
-  // txt
+  // txt - after img is ready
   renderMemeImg().onload = () => {
     renderMemeTxt()
   }
@@ -169,6 +172,7 @@ function renderMemeTxt() {
   })
 }
 
+// * set canvas size and position lines
 function setLinesPos() {
   const canvasCenter = getCenter()
   setGmemeLinePos(canvasCenter)
@@ -196,7 +200,7 @@ function setCanvasSize(imgNatDimensions) {
   gElCanvas.height = (imgH * gElCanvas.width) / imgW
 }
 
-// edit meme
+// * edit meme
 function onInputText(ev) {
   setLineTxt(ev.target.value)
   renderMeme()
@@ -240,13 +244,13 @@ function onRemoveLine() {
   renderMeme()
 }
 
-// save meme
+// * save meme
 function onSaveMeme() {
   const memeUrl = gElCanvas.toDataURL()
   saveMeme(memeUrl)
 }
 
-// download meme
+// * download meme
 function downloadCanvas(elLink) {
   //Protect the image so attacker could not download imgs from diff domain
   const data = gElCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
@@ -256,7 +260,7 @@ function downloadCanvas(elLink) {
   elLink.download = 'my-img.jpg'
 }
 
-// share meme
+// * share meme
 function onUploadImg() {
   const imgDataUrl = gElCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
 
@@ -276,7 +280,8 @@ function onUploadImg() {
 // The next 2 functions handle IMAGE UPLOADING to img tag from file system:
 function onImgInput(ev) {
   console.log('on img input')
-  loadImageFromInput(ev, renderImg)
+  gIsUserImg = true
+  loadImageFromInput(ev, renderMeme)
 }
 
 // CallBack func will run on success load of the img

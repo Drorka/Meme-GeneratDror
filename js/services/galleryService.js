@@ -244,7 +244,7 @@ var gMeme = loadFromStorage(GMEME_STORAGE_KEY) || {
   ],
 }
 
-// set and update gMeme
+// * set and update gMeme
 function setGmemeLinePos(canvasCenter) {
   const { xCenter, yCenter } = canvasCenter
   gMeme.lines.forEach((line, idx) => {
@@ -363,7 +363,8 @@ function removeLine() {
   gMeme.lines.splice(gMeme.selectedLineIdx, 1)
 }
 
-// get stuff galley
+// * get stuff
+// galley
 function getCurrImg() {
   let currImg = gImgs.find((img) => img.id === gMeme.selectedImgId)
   return currImg.url
@@ -378,13 +379,13 @@ function getGImgs() {
   return filteredImgs
 }
 
-// get stuff meme
+// meme
 function getGMeme() {
   const meme = gMeme
   return meme
 }
 
-// user memes
+// * user memes
 // save meme
 function saveMeme(memeUrl) {
   gMeme.id = makeId()
