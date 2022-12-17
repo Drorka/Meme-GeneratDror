@@ -62,20 +62,6 @@
     grid-template-columns: repeat(3, minmax(300px, 1fr));
 }
 
-/* tablet */
-/* @media (min-width: 780px) {
-	.grid-editor {
-	  max-width: var(--m);
-	}
-  } */
-  
-/* desktop */
-  /* @media (min-width: 1060px) {
-	.grid-editor {
-	  max-width: var(--l);
-	}
-  } */
-
 
   /*  *design workflow */
 /* desktop */
@@ -127,7 +113,7 @@
 		margin: 0 auto;
 		/* padding: 60px; */
 		grid-auto-flow: dense;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 		max-width: 350px;
 	}
 
@@ -157,6 +143,6 @@
 		margin: 0 auto;
 		/* padding: 60px; */
 		grid-auto-flow: dense;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 	}
 }

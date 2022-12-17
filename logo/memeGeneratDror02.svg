@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="765"
+   height="180"
+   viewBox="0 0 202.40707 47.625029"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="memeGeneratDror01.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.74564394"
+     inkscape:cx="580.03556"
+     inkscape:cy="363.44425"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="132.77115"
+       y="359.42087"
+       width="159.5936"
+       height="67.056129"
+       id="rect844" />
+    <rect
+       x="132.77115"
+       y="359.42087"
+       width="321.86945"
+       height="68.397247"
+       id="rect844-8" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g993"
+       transform="matrix(2.7043273,0,0,2.7043273,-79.27209,-272.51473)">
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,2.1075077,3.4051012)"
+         id="text842"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:44px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect844);display:inline;fill:#000000"><tspan
+           x="132.77148"
+           y="400.44958"
+           id="tspan1023">Meme</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-6.0983399,11.130056)"
+         id="text842-0"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:46.6667px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect844-8);display:inline;fill:#000000"><tspan
+           x="132.77148"
+           y="402.93625"
+           id="tspan1025">GeneratDror</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -5,8 +5,8 @@
     text-align: center;
 }
 
-.main-layout-footer .logo {
-	padding-top: 2rem;
+.footer-logo-container {
+	padding-top: 1.5rem;
 	padding-bottom: 1rem;
 }
 
@@ -16,10 +16,10 @@
     color: var(---txt);
 }
 
+
   /* tablet */
 @media (max-width: 1060px) {
-	.main-layout-footer .logo {
-		color: var(--txt);
+	.footer-logo-container {
 		padding-top: 1.3rem;
 		padding-bottom: 1rem;
 	}
