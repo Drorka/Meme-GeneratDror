@@ -219,6 +219,11 @@ function onSwitchLines() {
   renderMeme()
 }
 
+function onPrevNextLine(dir) {
+  prevNextLine(dir)
+  renderMeme()
+}
+
 function onChangeTxtDir(dir) {
   console.log(dir)
   setTxtDir(dir)

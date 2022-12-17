@@ -315,6 +315,26 @@ function switchLines() {
   console.log(gMeme.selectedLineIdx)
 }
 
+function prevNextLine(dir) {
+  if (!gMeme.lines.length) return
+
+  if (dir === 'next') {
+    // On last line go back to first line
+    if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx = 0
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) {
+      gMeme.selectedLineIdx = 0
+    } else {
+      // Move to next line
+      gMeme.selectedLineIdx++
+    }
+  } else if (dir === 'prev') {
+    // On first line go back to last line
+    if (gMeme.selectedLineIdx < 0)
+      gMeme.selectedLineIdx = gMeme.lines.length - 1
+    else gMeme.selectedLineIdx--
+  }
+}
+
 function setTxtDir(dir) {
   gMeme.lines[gMeme.selectedLineIdx].align = dir
 }

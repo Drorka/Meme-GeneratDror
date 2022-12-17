@@ -157,10 +157,14 @@
           >
             <i class="fa-solid fa-align-right"></i>
           </button>
-          <button class="etidor-btn prev-line" title="Previous line">
+          <button 
+		  	onclick="onPrevNextLine('prev')"  
+		  	class="etidor-btn prev-line" title="Previous line">
             <i class="fa-solid fa-up-long"></i>
           </button>
-          <button class="etidor-btn next-line" title="Next line">
+          <button 
+		 	onclick="onPrevNextLine('next')" 
+		  	class="etidor-btn next-line" title="Next line">
             <i class="fa-solid fa-down-long"></i>
           </button>
           <button
@@ -175,8 +179,8 @@
             class="etidor-btn add-line"
             title="Add line"
           >
-            add
-          </button>
+		  <i class="fa-solid fa-pen-to-square"></i>
+		</button>
           <button
             onclick="onRemoveLine()"
             class="etidor-btn remove-line"
