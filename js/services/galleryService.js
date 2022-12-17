@@ -358,19 +358,19 @@ function addLine() {
     fontSize: 40,
     align: 'center',
     color: 'white',
+    posX: 0,
+    posY: 0,
+    width: 200,
+    isDrag: false,
   }
   gMeme.lines.push(line)
   gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function removeLine() {
-  const currLineIdx1 = gMeme.lines[gMeme.selectedLineIdx]
-  const currLineIdx2 = gMeme.selectedLineIdx
-  const lines = gMeme.lines
-  console.log(currLineIdx1)
-  console.log(currLineIdx2)
-  console.log(lines)
   gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+  if (gMeme.selectedLineIdx > 0)
+    gMeme.selectedLineIdx = gMeme.selectedLineIdx - 1
 }
 
 // * get stuff
