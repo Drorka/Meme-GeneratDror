@@ -232,6 +232,8 @@ var gMeme = loadFromStorage(GMEME_STORAGE_KEY) || {
       color: 'white',
       posX: 0,
       posY: 0,
+      width: 200,
+      isDrag: false,
     },
     {
       txt: 'Enter text',
@@ -240,12 +242,16 @@ var gMeme = loadFromStorage(GMEME_STORAGE_KEY) || {
       color: 'white',
       posX: 0,
       posY: 0,
+      width: 200,
+      isDrag: false,
     },
   ],
 }
 
 // * set and update gMeme
 function setGmemeLinePos(canvasCenter) {
+  //   if (gMeme.lines[0].posx !== null) return
+  if (gMeme.lines[gMeme.selectedLineIdx].isDrag) return
   const { xCenter, yCenter } = canvasCenter
   gMeme.lines.forEach((line, idx) => {
     if (idx === 0) {
@@ -273,6 +279,8 @@ function resetGMeme() {
         color: 'white',
         posX: 0,
         posY: 0,
+        width: 200,
+        isDrag: false,
       },
       {
         txt: 'Enter text',
@@ -281,6 +289,8 @@ function resetGMeme() {
         color: 'white',
         posX: 0,
         posY: 0,
+        width: 200,
+        isDrag: false,
       },
     ],
   }
@@ -385,6 +395,11 @@ function getGMeme() {
   return meme
 }
 
+function getSelectedLineIdx() {
+  const selectedLineIdx = gMeme.selectedLineIdx
+  return selectedLineIdx
+}
+
 // * user memes
 // save meme
 function saveMeme(memeUrl) {
@@ -426,4 +441,43 @@ function onSetFilterBy(filterBy) {
 function setMemesFilter(filterBy = {}) {
   if (filterBy.searchTxt !== undefined) gFilterBy.searchTxt = filterBy.searchTxt
   return gFilterBy
+}
+
+// ! drag n drop inclass
+
+// * service
+//Check if the click is inside the circle
+function isLineClicked(clickedPos) {
+  const posX = gMeme.lines[gMeme.selectedLineIdx].posX
+  const posY = gMeme.lines[gMeme.selectedLineIdx].posY
+  console.log('isLineClicked. gMeme line pos:', posX, posY)
+  // Calc the distance between two dots
+  const distance = Math.sqrt(
+    (posX - clickedPos.x) ** 2 + (posY - clickedPos.y) ** 2
+  )
+  console.log('distance', distance)
+  console.log('line width', gMeme.lines[gMeme.selectedLineIdx].width)
+
+  //If its smaller then the radius of the circle we are inside
+  if (distance <= 200) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function setLineDrag(isDrag) {
+  gMeme.lines[gMeme.selectedLineIdx].isDrag = isDrag
+  console.log('is line drag?', gMeme.lines[gMeme.selectedLineIdx].isDrag)
+}
+
+// Move the circle in a delta, diff from the pervious pos
+function moveLine(dx, dy) {
+  console.log('were in move line', dx, dy)
+  console.log('gMeme X', gMeme.lines[gMeme.selectedLineIdx].posX)
+  console.log('gMeme Y', gMeme.lines[gMeme.selectedLineIdx].posY)
+  gMeme.lines[gMeme.selectedLineIdx].posX += dx
+  gMeme.lines[gMeme.selectedLineIdx].posY += dy
+  console.log('gMeme X', gMeme.lines[gMeme.selectedLineIdx].posX)
+  console.log('gMeme Y', gMeme.lines[gMeme.selectedLineIdx].posY)
 }

@@ -55,66 +55,66 @@ function addTouchListeners() {
 }
 
 // todo handle drag&drop and on-canvas editing
-function onDown(ev) {
-  // Get the ev pos from mouse or touch
-  const pos = getEvPos(ev)
-  // if (!isLineClicked(pos)) return
-  isDrag = true
-  //Save the pos we start from
-  gStartPos = pos
-  //   draw(pos)
-  console.log(pos)
-  console.log('down')
-  console.log(gStartPos)
-  document.body.style.cursor = 'grabbing'
-}
+// function onDown(ev) {
+//   // Get the ev pos from mouse or touch
+//   const pos = getEvPos(ev)
+//   // if (!isLineClicked(pos)) return
+//   isDrag = true
+//   //Save the pos we start from
+//   gStartPos = pos
+//   //   draw(pos)
+//   console.log(pos)
+//   console.log('down')
+//   console.log(gStartPos)
+//   document.body.style.cursor = 'grabbing'
+// }
 
-function onMove(ev) {
-  // const { isDrag } = getCircle()
+// function onMove(ev) {
+//   // const { isDrag } = getCircle()
 
-  if (!isDrag) return
+//   if (!isDrag) return
 
-  const pos = getEvPos(ev)
-  console.log('move')
-  console.log(pos)
-  // Calc the delta , the diff we moved
-  // const dx = pos.x - gStartPos.x
-  // const dy = pos.y - gStartPos.y
-  //   draw(pos)
-  // moveCircle(dx, dy)
-  // Save the last pos , we remember where we`ve been and move accordingly
-  gStartPos = pos
-  // The canvas is render again after every move
-  // renderCanvas()
-}
+//   const pos = getEvPos(ev)
+//   console.log('move')
+//   console.log(pos)
+//   // Calc the delta , the diff we moved
+//   // const dx = pos.x - gStartPos.x
+//   // const dy = pos.y - gStartPos.y
+//   //   draw(pos)
+//   // moveCircle(dx, dy)
+//   // Save the last pos , we remember where we`ve been and move accordingly
+//   gStartPos = pos
+//   // The canvas is render again after every move
+//   // renderCanvas()
+// }
 
-function onUp(ev) {
-  isDrag = false
-  console.log('up')
-  document.body.style.cursor = 'auto'
-}
+// function onUp(ev) {
+//   isDrag = false
+//   console.log('up')
+//   document.body.style.cursor = 'auto'
+// }
 
-function getEvPos(ev) {
-  // Gets the offset pos , the default pos
-  let pos = {
-    x: ev.offsetX,
-    y: ev.offsetY,
-  }
-  // Check if its a touch ev
-  if (TOUCH_EVS.includes(ev.type)) {
-    console.log('touch ev:', ev)
-    //soo we will not trigger the mouse ev
-    ev.preventDefault()
-    //Gets the first touch point
-    ev = ev.changedTouches[0]
-    //Calc the right pos according to the touch screen
-    pos = {
-      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-    }
-  }
-  return pos
-}
+// function getEvPos(ev) {
+//   // Gets the offset pos , the default pos
+//   let pos = {
+//     x: ev.offsetX,
+//     y: ev.offsetY,
+//   }
+//   // Check if its a touch ev
+//   if (TOUCH_EVS.includes(ev.type)) {
+//     console.log('touch ev:', ev)
+//     //soo we will not trigger the mouse ev
+//     ev.preventDefault()
+//     //Gets the first touch point
+//     ev = ev.changedTouches[0]
+//     //Calc the right pos according to the touch screen
+//     pos = {
+//       x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+//       y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+//     }
+//   }
+//   return pos
+// }
 
 // * rendering to the canvas
 function renderUserMemeToCanvas() {
@@ -297,4 +297,69 @@ function loadImageFromInput(ev, onImageReady) {
   }
 
   reader.readAsDataURL(ev.target.files[0]) // Read the file we picked
+}
+
+// ! drag n drop inclass
+// * controller
+function onDown(ev) {
+  // Get the ev pos from mouse or touch
+  const pos = getEvPos(ev)
+  console.log('down here', pos)
+  if (!isLineClicked(pos)) return
+
+  console.log('were on a line')
+  setLineDrag(true)
+  console.log('set line drag worked')
+  //Save the pos we start from
+  gStartPos = pos
+  document.body.style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+  //   const { isDrag } = getG()
+  const selectedLineIdx = getSelectedLineIdx()
+  console.log('on move selected line idx', selectedLineIdx)
+  const isDrag = getGMeme().lines[selectedLineIdx].isDrag
+  console.log('on move - id drag?', isDrag)
+
+  if (!isDrag) return
+
+  const pos = getEvPos(ev)
+  console.log('ev pos', pos)
+  // Calc the delta , the diff we moved
+  const dx = pos.x - gStartPos.x
+  const dy = pos.y - gStartPos.y
+  console.log('deltas x y', dx, dy)
+  moveLine(dx, dy)
+  // Save the last pos , we remember where we`ve been and move accordingly
+  gStartPos = pos
+  // The canvas is render again after every move
+  renderMeme()
+}
+
+function onUp() {
+  setLineDrag(false)
+  document.body.style.cursor = 'grab'
+}
+
+function getEvPos(ev) {
+  // Gets the offset pos , the default pos
+  let pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  }
+  // Check if its a touch ev
+  if (TOUCH_EVS.includes(ev.type)) {
+    console.log('ev:', ev)
+    //soo we will not trigger the mouse ev
+    ev.preventDefault()
+    //Gets the first touch point
+    ev = ev.changedTouches[0]
+    //Calc the right pos according to the touch screen
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    }
+  }
+  return pos
 }
