@@ -1,130 +1,113 @@
-/* * general */
-.main-content {
-  border: var(--clr5) 1px solid;
-  background-color: var(--bgColor);
-  padding-top: 8px;
-  padding-bottom: 10px;
-  min-height: 90vh;
-}
-
-/* * editor */
-.hide {
-	display: none;
-}
-
-.main-editor {
-	/* max-width: var(--s); */
-}
-
-.canvas-container {
-	width: 100%;
-}
-
-canvas {
-	/* border: 2px solid var(--outlines); */
-}
-
-.editor-panel {
-	/* border: 2px solid var(--outlines); */
-}
-
-.input-txt {
-	grid-column: 1 / 6;
-}
-
-.color-input {
-	opacity: 0;
-	cursor: pointer;
-	width: 0;
-	height: 0;
-}
-
-.file-input{
-	display: none;
-}
-
-/* * filters and search */
-.filters {}
-
-.search {
-	width: 50%;
-	flex-grow: 1;
-	flex-basis: 50%;
-}
-
-.search-input {
-	justify-self: center;
-    align-self: center;
-	width: 80%;
-	height: 40%;
-	min-height: 1.3rem;
-	border-radius: 15px;
-	background-color:rgba(0, 0, 0, 0.5);
-	color: var(--txt);
-	font-size: 1em;
-}
-
-.tags {
-	flex-grow: 1;
-	flex-basis: 50%;
-}
-
-.tag-list li {
-    min-width: 90px;
-    min-height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tag-list li:hover {
-	cursor: pointer;
-	font-weight: 700;
-}
-
-/* * img gallery */
-
-.img-container {}
-
-.card-img {
-	border-radius: 10px;
-	transition: 0.4s;
-	height: 190px;
-}
-.card-img:hover {
-	cursor: pointer;
-	outline: 1px solid var(--outlines);
-}
-
-/* *user memes gallery */
-.remove-meme-btn {
-	position:relative;
-	width: 30px;
-	height: 30px;
-	left:43%;
-	top: -120px;
-	text-align: center;
-	opacity:0;
-	
-	transition: opacity .35s ease;
-}
-
-.user-meme-container:hover .remove-meme-btn {
-	opacity:1;
-}
-
-.user-meme:hover {
-	opacity: 0.8;
-}
-
-
-  /*  *design workflow */
+/*  *design workflow */
 /* desktop */
-.main-editor {
-	max-width: var(--l);
-}
+	/* * general */
+	.main-content {
+		border: var(--clr5) 1px solid;
+		background-color: var(--bgColor);
+		padding-top: 8px;
+		padding-bottom: 10px;
+		min-height: 90vh;
+	}
 
-  /* tablet */
+	/* * editor */
+	.hide {
+		display: none;
+	}
+
+	.main-editor {
+		max-width: var(--l);
+	}
+
+	.canvas-container {
+		width: 100%;
+	}
+
+	.input-txt {
+		grid-column: 1 / 6;
+	}
+
+	.color-input {
+		opacity: 0;
+		cursor: pointer;
+		width: 0;
+		height: 0;
+	}
+
+	.file-input{
+		display: none;
+	}
+
+	/* * filters and search */
+	.search {
+		width: 50%;
+		flex-grow: 1;
+		flex-basis: 50%;
+	}
+
+	.search-input {
+		justify-self: center;
+		align-self: center;
+		width: 80%;
+		height: 40%;
+		min-height: 1.3rem;
+		border-radius: 15px;
+		background-color:rgba(0, 0, 0, 0.5);
+		color: var(--txt);
+		font-size: 1em;
+	}
+
+	.tags {
+		flex-grow: 1;
+		flex-basis: 50%;
+	}
+
+	.tag-list li {
+		min-width: 90px;
+		min-height: 90px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.tag-list li:hover {
+		cursor: pointer;
+		font-weight: 700;
+	}
+
+	/* * img gallery */
+	.card-img {
+		border-radius: 10px;
+		transition: 0.4s;
+		height: 190px;
+	}
+
+	.card-img:hover {
+		cursor: pointer;
+		outline: 1px solid var(--outlines);
+	}
+
+	/* *user memes gallery */
+	.remove-meme-btn {
+		position:relative;
+		width: 30px;
+		height: 30px;
+		left:43%;
+		top: -120px;
+		text-align: center;
+		opacity:0;
+		
+		transition: opacity .35s ease;
+	}
+
+	.user-meme-container:hover .remove-meme-btn {
+		opacity:1;
+	}
+
+	.user-meme:hover {
+		opacity: 0.8;
+	}
+
+/* tablet */
 @media (max-width: 1060px) {
 	.main-editor {
 		max-width: var(--m);
@@ -140,7 +123,7 @@ canvas {
 	}
 }
 
- /* mobile */
+/* mobile */
 @media (max-width: 780px) {
 	.main-content {
 		padding-top: 70px;
@@ -166,66 +149,26 @@ canvas {
 		grid-column: 1 / 6;
 	}
 
-	.size-up {
+	.size-up, .prev-line, .fill-color {
 		grid-column: 1 / 2;
 	
 	}
 	
-	.size-down {
+	.size-down, .next-line, .upld {
 		grid-column: 2 / 3;
 	
 	}
 	
-	.dir-r {
+	.dir-r, .switch-lines, .dnld {
 		grid-column: 3 / 4;
 	
 	}
 	
-	.dir-c {
+	.dir-c, .add-line, .save {
 		grid-column: 4 / 5;
 	}
 	
-	.dir-l {
-		grid-column: 5 / 6;
-	}
-	
-	.prev-line {
-		grid-column: 1 / 2;
-	}
-	
-	.next-line {
-		grid-column: 2 / 3;
-	}
-	
-	.switch-lines {
-		grid-column: 3 / 4;
-	}
-	
-	.add-line {
-		grid-column: 4 / 5;
-	}
-	
-	.remove-line {
-		grid-column: 5 / 6;
-	}
-	
-	.fill-color {
-		grid-column: 1 / 2;
-	}
-	
-	.dnld {
-		grid-column: 2 / 3;
-	}
-
-	.dnld {
-		grid-column: 3 / 4;
-	}
-	
-	.save {
-		grid-column: 4 / 5;
-	}
-	
-	.share {
+	.dir-l, .remove-line, .share {
 		grid-column: 5 / 6;
 	}
 

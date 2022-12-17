@@ -1,23 +1,23 @@
  /*  *design workflow */
 /* desktop */
-.main-layout-footer {
-    background-color: var(--headerFooterBg);
-    text-align: center;
-}
+	.main-layout-footer {
+		background-color: var(--headerFooterBg);
+		text-align: center;
+	}
 
-.footer-logo-container {
-	padding-top: 1.5rem;
-	padding-bottom: 1rem;
-}
+	.footer-logo-container {
+		padding-top: 1.5rem;
+		padding-bottom: 1rem;
+	}
 
-.main-layout-footer small {
-    font-size: 13px;
-    letter-spacing: 0.39px;
-    color: var(---txt);
-}
+	.main-layout-footer small {
+		font-size: 13px;
+		letter-spacing: 0.39px;
+		color: var(---txt);
+	}
 
 
-  /* tablet */
+/* tablet */
 @media (max-width: 1060px) {
 	.footer-logo-container {
 		padding-top: 1.3rem;
@@ -25,7 +25,7 @@
 	}
 }
 
- /* mobile */
+/* mobile */
 @media (max-width: 780px) {
 	
 	}

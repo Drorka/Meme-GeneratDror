@@ -3,9 +3,8 @@
 }
 
 html {
-    font-family: Raleway, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     color: var(--txt);
-    /* line-height: 1.25em; */
     letter-spacing: 0.48px;
     line-height: 1.13;
 }
@@ -39,7 +38,6 @@ button {
     font-size: 1em;
 	background-color: var(--txt);
 	color: var(--bgColor);
-	/* border: 1px solid var(--outlines); */
 	border: none;
 	border-radius: 7px;
 }

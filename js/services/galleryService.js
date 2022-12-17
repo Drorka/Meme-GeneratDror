@@ -443,10 +443,8 @@ function setMemesFilter(filterBy = {}) {
   return gFilterBy
 }
 
-// ! drag n drop inclass
-
-// * service
-//Check if the click is inside the circle
+// * drag n drop
+//Check if the click is on the line
 function isLineClicked(clickedPos) {
   const posX = gMeme.lines[gMeme.selectedLineIdx].posX
   const posY = gMeme.lines[gMeme.selectedLineIdx].posY
@@ -458,7 +456,7 @@ function isLineClicked(clickedPos) {
   console.log('distance', distance)
   console.log('line width', gMeme.lines[gMeme.selectedLineIdx].width)
 
-  //If its smaller then the radius of the circle we are inside
+  //If its smaller then the line we are inside
   if (distance <= 200) {
     return true
   } else {
@@ -471,7 +469,7 @@ function setLineDrag(isDrag) {
   console.log('is line drag?', gMeme.lines[gMeme.selectedLineIdx].isDrag)
 }
 
-// Move the circle in a delta, diff from the pervious pos
+// Move the line in a delta, diff from the pervious pos
 function moveLine(dx, dy) {
   console.log('were in move line', dx, dy)
   console.log('gMeme X', gMeme.lines[gMeme.selectedLineIdx].posX)

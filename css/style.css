@@ -4,14 +4,10 @@
 
 /* Basic */
 @import './basic/base.css';
-@import './basic/buttons.css';
-@import './basic/icons.css';
 @import './basic/helpers.css';
 @import './basic/layout.css';
 
 /* Cmps */
 @import './cmps/header.css';
 @import './cmps/main-content.css';
-@import './cmps/modal.css';
-@import './cmps/dropdown.css';
 @import './cmps/footer.css';
