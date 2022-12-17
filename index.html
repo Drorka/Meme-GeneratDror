@@ -106,7 +106,7 @@
           >
             <i class="fa-solid fa-trash"></i>
           </button>
-          <button class="etidor-btn fill-color" title="Change color">
+          <button onclick="document.querySelector('.color-input').click()" class="etidor-btn fill-color" title="Change color">
             <i class="fa-solid fa-fill-drip"
               ><input
                 oninput="onChangeColor(this.value)"
@@ -117,14 +117,13 @@
                 height="0px"
             /></i>
           </button>
-          <button class="etidor-btn upld" title="Upload image">
+          <button onclick="document.querySelector('.file-input').click()" class="etidor-btn upld" title="Upload image">
               <i class="fa-solid fa-upload">
 					<input
-					id = 'image'  
 					type="file"
-					class="file-input btn"
+					class="file-input"
 					name="image"
-					onchange="onImgInput(event)"
+					oninput="onImgInput(event)"
 					/>
               </i>
             </a>
