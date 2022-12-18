@@ -176,7 +176,7 @@ function onMove(ev) {
 
 function onUp() {
   setLineDrag(false)
-  document.body.style.cursor = 'grab'
+  document.body.style.cursor = 'auto'
 }
 
 function getEvPos(ev) {
@@ -251,6 +251,13 @@ function onRemoveLine() {
 function onSaveMeme() {
   const memeUrl = gElCanvas.toDataURL()
   saveMeme(memeUrl)
+  // show confirmation msg
+  document.querySelector('.saved-meme-modal').classList.remove('hide')
+  setTimeout(closeModal, 700)
+}
+
+function closeModal() {
+  document.querySelector('.saved-meme-modal').classList.add('hide')
 }
 
 // * download meme
